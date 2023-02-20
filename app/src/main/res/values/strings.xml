@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Cinema-Wine-Domino</string>
+    <string name="title_activity_bottom_navigation">ActivityBottomNavigation</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="home_page">Home_Page</string>
+    <string name="circle_page" />
+    <string name="search_page" />
+</resources>

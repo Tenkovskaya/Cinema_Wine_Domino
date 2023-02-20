@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_page"
+        android:title="Home Page"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:id="@+id/circle_page"
+        android:title="Circle Page"
+        android:icon="@drawable/ic_circle"/>
+
+    <item
+        android:id="@+id/search_page"
+        android:title="Search Page"
+        android:icon="@drawable/ic_search"/>
+
+
+</menu>
