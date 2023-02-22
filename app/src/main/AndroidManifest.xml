@@ -25,7 +25,7 @@
             android:exported="false"
             android:label="@string/title_activity_bottom_navigation" />
         <activity
-            android:name=".LoadingActivity"
+            android:name=".activity.LoadingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

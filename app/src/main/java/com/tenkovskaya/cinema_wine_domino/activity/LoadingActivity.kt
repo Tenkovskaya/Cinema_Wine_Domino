@@ -1,11 +1,10 @@
-package com.tenkovskaya.cinema_wine_domino
+package com.tenkovskaya.cinema_wine_domino.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.tenkovskaya.cinema_wine_domino.R
-import com.tenkovskaya.cinema_wine_domino.activity.HomeActivity
 
 class LoadingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
