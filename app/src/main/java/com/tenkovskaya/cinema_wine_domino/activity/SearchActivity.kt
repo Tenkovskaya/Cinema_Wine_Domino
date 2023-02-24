@@ -10,7 +10,6 @@ import com.tenkovskaya.cinema_wine_domino.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {
 
-    lateinit var bottomNavigationView: BottomNavigationView
     lateinit var binding: ActivitySearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,4 +44,6 @@ class SearchActivity : AppCompatActivity() {
             }
         }
     }
+
+
 }

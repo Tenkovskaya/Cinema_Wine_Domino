@@ -3,9 +3,12 @@ package com.tenkovskaya.cinema_wine_domino.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.util.Log
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.tenkovskaya.cinema_wine_domino.Constant
 import com.tenkovskaya.cinema_wine_domino.R
+import com.tenkovskaya.cinema_wine_domino.TheMovieDb.MovieAdapter
 import com.tenkovskaya.cinema_wine_domino.TheMovieDb.MovieDbService
 import com.tenkovskaya.cinema_wine_domino.TheMovieDb.MovieResponse
 import com.tenkovskaya.cinema_wine_domino.databinding.ActivityHomeBinding
@@ -17,8 +20,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class HomeActivity : AppCompatActivity() {
 
-    lateinit var bottomNavigationView: BottomNavigationView
     lateinit var binding: ActivityHomeBinding
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: MovieAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +31,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         navigationViewActiv()
+        movieStart()
     }
 
     fun navigationViewActiv() {
@@ -52,31 +58,45 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    fun retrofitStart(){
+    fun movieStart(){
+        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = GridLayoutManager(this, 3)
 
-    val retrofit = Retrofit.Builder()
-        .baseUrl(Constant.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    val movieDbService = retrofit.create(MovieDbService::class.java)
-    val call = movieDbService.getPopularMovies(Constant.API_KEY)
-
-    call.enqueue(object : Callback<MovieResponse> {
-        override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-            if (response.isSuccessful) {
-                val movies = response.body()?.movies
-                // Do something with the list of movies
-            } else {
-                // Handle the error
-            }
-        }
-
-        override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-            // Handle the failure
-        }
-    })
+        val movies = getMoviesFromApi()
+        val adapter = MovieAdapter(movies)
+        recyclerView.adapter = adapter
     }
+
+    private fun getMoviesFromApi() {
+        val apiKey = Constant.API_KEY
+        val language = "en-US"
+        val page = 1
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl(Constant.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val service = retrofit.create(MovieDbService::class.java)
+        val call = service.getPopularMovies(apiKey, language, page)
+
+        call.enqueue(object : Callback<MovieResponse> {
+            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
+                if (response.isSuccessful) {
+                    val movies = response.body()?.results
+                    // обновляем список фильмов в RecyclerView
+                    adapter.updateList(movies)
+                } else {
+                    Log.e("API_ERROR", "Error: ${response.code()}")
+                }
+            }
+
+            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+                Log.e("API_ERROR", "Error: ${t.message}")
+            }
+        })
+    }
+
 
 }
 

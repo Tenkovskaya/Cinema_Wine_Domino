@@ -9,7 +9,6 @@ import com.tenkovskaya.cinema_wine_domino.databinding.ActivityCircleBinding
 
 class CircleActivity : AppCompatActivity() {
 
-    lateinit var bottomNavigationView: BottomNavigationView
     lateinit var binding: ActivityCircleBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
