@@ -31,7 +31,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.tenkovskaya.cinema_wine_domino.activity.LoginActivity" />
+
+        <activity android:name=".activity.LoginActivity" />
     </application>
 
 </manifest>

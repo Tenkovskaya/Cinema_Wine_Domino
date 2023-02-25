@@ -19,8 +19,9 @@ class CircleActivity : AppCompatActivity() {
         binding = ActivityCircleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        checkLogin()
         navigationViewActiv()
+        checkLogin()
+
     }
 
     private fun checkLogin() {
@@ -31,6 +32,8 @@ class CircleActivity : AppCompatActivity() {
 
         if (!email.isNullOrEmpty() && !password.isNullOrEmpty() && !name.isNullOrEmpty()) {
             Log.d(TAG, "profile page checking" )
+            val savedName= sharedPref.getString("name", "")
+            binding.nameInformation.text = savedName
         } else {
             // Данных нет, переходим на страницу регистрации
             val intent = Intent(this, LoginActivity::class.java)
@@ -39,11 +42,11 @@ class CircleActivity : AppCompatActivity() {
         }
     }
 
-    fun usernameInfo(view:View){
-        val sharedPref = getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
-        val savedName= sharedPref.getString("name", "")
-        binding.nameInformation.text = savedName
-    }
+//    fun usernameInfo(view:View){
+//        val sharedPref = getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
+//        val savedName= sharedPref.getString("name", "")
+//        binding.nameInformation.text = savedName
+//    }
 
     fun navigationViewActiv() {
         binding.bottomNavigator.apply {
