@@ -37,7 +37,7 @@ class HomeActivity : AppCompatActivity() {
         navigationViewActiv()
 
         // Получаем список фильмов из API
-//        getMoviesFromApi()
+        getMoviesFromApi()
 
     }
 
@@ -82,7 +82,7 @@ class HomeActivity : AppCompatActivity() {
         call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
-                    val movies = response.body()?.results
+                    val movies = response.body()?.movies
                     // Создаем и устанавливаем адаптер для RecyclerView
                     adapter = movies?.let { MovieAdapter(it) }!!
                     recyclerView.adapter = adapter
