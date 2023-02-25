@@ -1,9 +1,12 @@
 package com.tenkovskaya.cinema_wine_domino.activity
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.util.Log
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import com.tenkovskaya.cinema_wine_domino.Constant.TAG
 import com.tenkovskaya.cinema_wine_domino.R
 import com.tenkovskaya.cinema_wine_domino.databinding.ActivityCircleBinding
 
@@ -16,8 +19,30 @@ class CircleActivity : AppCompatActivity() {
         binding = ActivityCircleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        checkLogin()
         navigationViewActiv()
+    }
+
+    private fun checkLogin() {
+        val sharedPref = getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
+        val email = sharedPref.getString("login", "")
+        val password = sharedPref.getString("password", "")
+        val name = sharedPref.getString("name", "")
+
+        if (!email.isNullOrEmpty() && !password.isNullOrEmpty() && !name.isNullOrEmpty()) {
+            Log.d(TAG, "profile page checking" )
+        } else {
+            // Данных нет, переходим на страницу регистрации
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    fun usernameInfo(view:View){
+        val sharedPref = getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
+        val savedName= sharedPref.getString("name", "")
+        binding.nameInformation.text = savedName
     }
 
     fun navigationViewActiv() {

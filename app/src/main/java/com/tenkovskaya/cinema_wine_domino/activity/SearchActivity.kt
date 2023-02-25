@@ -1,11 +1,9 @@
 package com.tenkovskaya.cinema_wine_domino.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.appcompat.app.AppCompatActivity
 import com.tenkovskaya.cinema_wine_domino.R
-import com.tenkovskaya.cinema_wine_domino.databinding.ActivityHomeBinding
 import com.tenkovskaya.cinema_wine_domino.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {

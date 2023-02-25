@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cinema_Wine_Domino"
         tools:targetApi="31">
+
         <activity
             android:name=".activity.CircleActivity"
             android:exported="false" />
@@ -20,10 +21,7 @@
         <activity
             android:name=".activity.HomeActivity"
             android:exported="false" />
-        <activity
-            android:name=".ActivityBottomNavigation"
-            android:exported="false"
-            android:label="@string/title_activity_bottom_navigation" />
+
         <activity
             android:name=".activity.LoadingActivity"
             android:exported="true">
@@ -33,6 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.tenkovskaya.cinema_wine_domino.activity.LoginActivity" />
     </application>
 
 </manifest>

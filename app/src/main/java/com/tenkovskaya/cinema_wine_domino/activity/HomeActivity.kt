@@ -1,11 +1,12 @@
 package com.tenkovskaya.cinema_wine_domino.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.FirebaseApp
 import com.tenkovskaya.cinema_wine_domino.Constant
 import com.tenkovskaya.cinema_wine_domino.R
 import com.tenkovskaya.cinema_wine_domino.TheMovieDb.MovieAdapter
@@ -30,8 +31,16 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        FirebaseApp.initializeApp(this)
+
+        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = GridLayoutManager(this, 3)
+
         navigationViewActiv()
-        movieStart()
+
+        // Получаем список фильмов из API
+//        getMoviesFromApi()
+
     }
 
     fun navigationViewActiv() {
@@ -58,14 +67,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    fun movieStart(){
-        recyclerView = findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = GridLayoutManager(this, 3)
 
-        val movies = getMoviesFromApi()
-        val adapter = MovieAdapter(movies)
-        recyclerView.adapter = adapter
-    }
 
     private fun getMoviesFromApi() {
         val apiKey = Constant.API_KEY
@@ -79,13 +81,13 @@ class HomeActivity : AppCompatActivity() {
 
         val service = retrofit.create(MovieDbService::class.java)
         val call = service.getPopularMovies(apiKey, language, page)
-
         call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
                     val movies = response.body()?.results
-                    // обновляем список фильмов в RecyclerView
-                    adapter.updateList(movies)
+                    // Создаем и устанавливаем адаптер для RecyclerView
+                    adapter = movies?.let { MovieAdapter(it) }!!
+                    recyclerView.adapter = adapter
                 } else {
                     Log.e("API_ERROR", "Error: ${response.code()}")
                 }
@@ -99,5 +101,7 @@ class HomeActivity : AppCompatActivity() {
 
 
 }
+
+
 
 

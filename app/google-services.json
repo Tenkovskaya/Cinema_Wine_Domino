@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "291558181520",
+    "project_id": "cinemawinedomino",
+    "storage_bucket": "cinemawinedomino.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291558181520:android:e0f1a2b0caed01ce84a615",
+        "android_client_info": {
+          "package_name": "com.tenkovskaya.cinema_wine_domino"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291558181520-vnngqtc8142i3bd4ffcggdrckid4ih3p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7izqV7FAwo1DjcyP4FteKGk_jiGHfGNU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "291558181520-vnngqtc8142i3bd4ffcggdrckid4ih3p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

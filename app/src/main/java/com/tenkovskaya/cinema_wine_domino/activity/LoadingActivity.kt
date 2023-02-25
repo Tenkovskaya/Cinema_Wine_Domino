@@ -1,9 +1,9 @@
 package com.tenkovskaya.cinema_wine_domino.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import com.tenkovskaya.cinema_wine_domino.R
 
 class LoadingActivity : AppCompatActivity() {
