@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.tenkovskaya.cinema_wine_domino.Constant.TAG
 import com.tenkovskaya.cinema_wine_domino.R

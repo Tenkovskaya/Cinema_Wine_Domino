@@ -3,32 +3,45 @@ package com.tenkovskaya.cinema_wine_domino.TheMovieDb
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.tenkovskaya.cinema_wine_domino.R
 
-class MovieAdapter(private var movies: List<Movie>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter(private var movies: List<Movie>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+        val view = LayoutInflater
+            .from(parent.context)
+            .inflate(R.layout.item_movie, parent, false)
+        return MovieViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val movie = movies[position]
-        holder.bind(movie)
+    override fun getItemCount(): Int = movies.size
+
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        holder.bind(movies[position])
     }
 
-    override fun getItemCount() = movies.size
-
-    fun updateList(movies: List<Movie>) {
+    fun updateMovies(movies: List<Movie>) {
         this.movies = movies
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+
+        private val poster: ImageView = itemView.findViewById(R.id.movie_poster)
+        private val title: TextView = itemView.findViewById(R.id.movie_title)
 
         fun bind(movie: Movie) {
-            // Настройка отображения информации о фильме в ячейке таблицы
+            Glide.with(itemView)
+                .load("https://image.tmdb.org/t/p/w342${movie.posterPath}")
+                .transform(CenterCrop())
+                .into(poster)
+                title.text = movie.title
         }
     }
 }
