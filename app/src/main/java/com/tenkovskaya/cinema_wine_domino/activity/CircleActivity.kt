@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.tenkovskaya.cinema_wine_domino.Constant.TAG
 import com.tenkovskaya.cinema_wine_domino.R
@@ -12,6 +14,9 @@ import com.tenkovskaya.cinema_wine_domino.databinding.ActivityCircleBinding
 class CircleActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityCircleBinding
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +30,9 @@ class CircleActivity : AppCompatActivity() {
 
     private fun checkLogin() {
         val sharedPref = getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
-        val email = sharedPref.getString("login", "")
-        val password = sharedPref.getString("password", "")
         val name = sharedPref.getString("name", "")
 
-        if (!email.isNullOrEmpty() && !password.isNullOrEmpty() && !name.isNullOrEmpty()) {
+        if (!name.isNullOrEmpty()) {
             Log.d(TAG, "profile page checking" )
             val savedName= sharedPref.getString("name", "")
             binding.nameInformation.text = savedName
@@ -41,11 +44,6 @@ class CircleActivity : AppCompatActivity() {
         }
     }
 
-//    fun usernameInfo(view:View){
-//        val sharedPref = getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
-//        val savedName= sharedPref.getString("name", "")
-//        binding.nameInformation.text = savedName
-//    }
 
     fun navigationViewActiv() {
         binding.bottomNavigator.apply {

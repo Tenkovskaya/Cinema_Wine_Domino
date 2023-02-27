@@ -32,6 +32,7 @@
                 app:spanCount="3"
                 tools:listitem="@layout/item_movie" />
 
+
         </GridLayout>
     </androidx.core.widget.NestedScrollView>
 

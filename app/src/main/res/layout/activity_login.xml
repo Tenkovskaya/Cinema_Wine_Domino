@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="252dp"
-        android:text="Зарегистрируйтесь что бы продолжить"
+        android:text="Авторизуйтесь что бы продолжить"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,46 +20,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edit_email"
-        android:layout_width="265dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="40dp"
-        android:hint="Email"
-        app:layout_constraintEnd_toEndOf="@+id/text_register"
-        app:layout_constraintStart_toStartOf="@+id/text_register"
-        app:layout_constraintTop_toBottomOf="@+id/text_register" />
-
-    <EditText
-        android:id="@+id/edit_password"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="28dp"
-        android:hint="Password"
-        app:layout_constraintEnd_toEndOf="@+id/edit_email"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edit_email"
-        app:layout_constraintTop_toBottomOf="@+id/edit_email" />
-
-    <EditText
         android:id="@+id/editName"
         android:layout_width="0dp"
         android:layout_height="49dp"
-        android:layout_marginTop="28dp"
-        android:hint="Name"
-        app:layout_constraintEnd_toEndOf="@+id/edit_email"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edit_email"
-        app:layout_constraintTop_toBottomOf="@+id/edit_password" />
+        android:layout_marginTop="32dp"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/text_register"
+        app:layout_constraintStart_toStartOf="@+id/text_register"
+        app:layout_constraintTop_toBottomOf="@+id/text_register" />
 
     <Button
         android:id="@+id/button_register"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:onClick="setOnClickListener"
         android:text="Подтвердить"
-        app:layout_constraintEnd_toEndOf="@+id/edit_password"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edit_password"
+        app:layout_constraintEnd_toEndOf="@+id/editName"
+        app:layout_constraintStart_toStartOf="@+id/editName"
         app:layout_constraintTop_toBottomOf="@+id/editName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

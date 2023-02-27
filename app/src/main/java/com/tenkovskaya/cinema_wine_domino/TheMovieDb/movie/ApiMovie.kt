@@ -1,4 +1,4 @@
-package com.tenkovskaya.cinema_wine_domino.TheMovieDb
+package com.tenkovskaya.cinema_wine_domino.TheMovieDb.movie
 
 import com.tenkovskaya.cinema_wine_domino.Constant
 import retrofit2.Call

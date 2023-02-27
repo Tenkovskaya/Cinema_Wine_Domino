@@ -1,4 +1,4 @@
-package com.tenkovskaya.cinema_wine_domino.TheMovieDb
+package com.tenkovskaya.cinema_wine_domino.TheMovieDb.TWShow
 
 import com.tenkovskaya.cinema_wine_domino.Constant
 import retrofit2.Call
@@ -7,9 +7,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object MoviesRepository {
-
-    val api: ApiMovie
+object TvShowRepository {
+    val apiTvSeries: ApiTVShow
 
     init {
         val retrofit = Retrofit.Builder()
@@ -17,26 +16,26 @@ object MoviesRepository {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        api = retrofit.create(ApiMovie::class.java)
+        apiTvSeries = retrofit.create(ApiTVShow::class.java)
     }
 
-    fun getPopularMoviesList(
+    fun getPopularTvSeriesList(
         page: Int = 1,
-        onSuccess: (movies: List<Movie>) -> Unit,
+        onSuccess: (tvSeries: List<TVShow>) -> Unit,
         onError: () -> Unit
     ) {
 
-        api.getPopularMovies(page = page)
-            .enqueue(object : Callback<MovieResponse> {
+        apiTvSeries.getPopularTVShows(page = page)
+            .enqueue(object : Callback<TVResponse> {
                 override fun onResponse(
-                    call: Call<MovieResponse>,
-                    response: Response<MovieResponse>
+                    call: Call<TVResponse>,
+                    response: Response<TVResponse>
                 ) {
                     if (response.isSuccessful) {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
-                            onSuccess.invoke(responseBody.movies)
+                            onSuccess.invoke(responseBody.tvShows)
                         } else {
                             onError.invoke()
                         }
@@ -45,11 +44,10 @@ object MoviesRepository {
                     }
                 }
 
-                override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+                override fun onFailure(call: Call<TVResponse>, t: Throwable) {
                     onError.invoke()
                 }
             })
 
     }
-
 }

@@ -1,4 +1,4 @@
-package com.tenkovskaya.cinema_wine_domino.TheMovieDb
+package com.tenkovskaya.cinema_wine_domino.TheMovieDb.movie
 
 import android.view.LayoutInflater
 import android.view.View
@@ -25,8 +25,15 @@ class MovieAdapter(private var movies: List<Movie>) : RecyclerView.Adapter<Movie
         holder.bind(movies[position])
     }
 
-    fun updateMovies(movies: List<Movie>) {
+    fun setMovies(movies: List<Movie>) {
         this.movies = movies
+    }
+
+    fun getMovies(): List<Movie> {
+        return this.movies
+    }
+
+    fun updateMovies() {
         notifyDataSetChanged()
     }
 

@@ -1,4 +1,4 @@
-package com.tenkovskaya.cinema_wine_domino.TheMovieDb
+package com.tenkovskaya.cinema_wine_domino.TheMovieDb.movie
 
 import com.google.gson.annotations.SerializedName
 

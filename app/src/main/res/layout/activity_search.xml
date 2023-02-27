@@ -66,4 +66,61 @@
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/title_movies_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Фильмы"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/list_movie"
+            app:layout_constraintEnd_toEndOf="@+id/list_movie"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/list_movie" />
+
+        <TextView
+            android:id="@+id/title_show_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Сериалы"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/list_show"
+            app:layout_constraintEnd_toEndOf="@+id/list_show"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/list_show" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_show"
+            android:layout_width="377dp"
+            android:layout_height="200dp"
+            android:layout_marginBottom="92dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.529"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:listitem="@layout/item_for_list"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_movie"
+            android:layout_width="377dp"
+            android:layout_height="200dp"
+            android:layout_marginBottom="60dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/list_show"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:listitem="@layout/item_for_list">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </RelativeLayout>
